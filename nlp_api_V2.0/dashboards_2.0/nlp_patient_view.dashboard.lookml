@@ -1,5 +1,5 @@
-- dashboard: nlp_patient_view_2_0
-  title: NLP Patient View (2.0)
+- dashboard: nlp_patient_view
+  title: NLP Patient View
   layout: newspaper
   preferred_viewer: dashboards-next
   elements:

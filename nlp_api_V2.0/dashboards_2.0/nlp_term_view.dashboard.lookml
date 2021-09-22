@@ -1,5 +1,5 @@
-- dashboard: nlp_term_view_2_0
-  title: NLP Term View (2.0)
+- dashboard: nlp_term_view
+  title: NLP Term View
   layout: newspaper
   preferred_viewer: dashboards-next
   elements:

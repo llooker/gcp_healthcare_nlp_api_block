@@ -17,152 +17,152 @@ view: kaggle_clinical_notes_nlp_results {
     full_suggestions: yes
   }
 
-  dimension: patient_id {
-    label: "(0) Patient ID"
-    type: string
-    sql: ${dob_offset_raw} || ${sex} ;;
-    full_suggestions: yes
-    link: {
-      label: "See Patient View for {{ value }}"
-      url: "/dashboards-next/healthcare_nlp_api_2.0::nlp_patient_view_2_0?Patient+ID={{ value | encode_uri }}"
-      icon_url: "http://www.looker.com/favicon.ico"
-    }
+  # dimension: patient_id {
+  #   label: "(0) Patient ID"
+  #   type: string
+  #   sql: ${dob_offset_raw} || ${sex} ;;
+  #   full_suggestions: yes
+  #   link: {
+  #     label: "See Patient View for {{ value }}"
+  #     url: "/dashboards-next/healthcare_nlp_api_2.0::nlp_patient_view_2_0?Patient+ID={{ value | encode_uri }}"
+  #     icon_url: "http://www.looker.com/favicon.ico"
+  #   }
 
-  }
+  # }
 
 ######################  DATES ######################
 
-  dimension_group: admission {
-    hidden: yes
-    type: time
-    description: "%E4Y-%m-%d"
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.admission_date ;;
-  }
+  # dimension_group: admission {
+  #   hidden: yes
+  #   type: time
+  #   description: "%E4Y-%m-%d"
+  #   timeframes: [
+  #     raw,
+  #     date,
+  #     week,
+  #     month,
+  #     quarter,
+  #     year
+  #   ]
+  #   convert_tz: no
+  #   datatype: date
+  #   sql: ${TABLE}.admission_date ;;
+  # }
 
-  dimension_group: admission_offset {
-    label: "(2) Admission"
-    type: time
-    description: "%E4Y-%m-%d"
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: DATE_ADD(DATE(${admission_raw}), INTERVAL -184 YEAR) ;;
-  }
+  # dimension_group: admission_offset {
+  #   label: "(2) Admission"
+  #   type: time
+  #   description: "%E4Y-%m-%d"
+  #   timeframes: [
+  #     raw,
+  #     date,
+  #     week,
+  #     month,
+  #     quarter,
+  #     year
+  #   ]
+  #   convert_tz: no
+  #   datatype: date
+  #   sql: DATE_ADD(DATE(${admission_raw}), INTERVAL -184 YEAR) ;;
+  # }
 
-  dimension_group: discharge {
-    hidden: yes
-    type: time
-    description: "%E4Y-%m-%d"
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.discharge_date ;;
-  }
+  # dimension_group: discharge {
+  #   hidden: yes
+  #   type: time
+  #   description: "%E4Y-%m-%d"
+  #   timeframes: [
+  #     raw,
+  #     date,
+  #     week,
+  #     month,
+  #     quarter,
+  #     year
+  #   ]
+  #   convert_tz: no
+  #   datatype: date
+  #   sql: ${TABLE}.discharge_date ;;
+  # }
 
-  dimension_group: discharge_offset {
-    label: "(3) Discharge"
-    type: time
-    description: "%E4Y-%m-%d"
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: DATE_ADD(DATE(${discharge_raw}), INTERVAL -184 YEAR) ;;
-  }
+  # dimension_group: discharge_offset {
+  #   label: "(3) Discharge"
+  #   type: time
+  #   description: "%E4Y-%m-%d"
+  #   timeframes: [
+  #     raw,
+  #     date,
+  #     week,
+  #     month,
+  #     quarter,
+  #     year
+  #   ]
+  #   convert_tz: no
+  #   datatype: date
+  #   sql: DATE_ADD(DATE(${discharge_raw}), INTERVAL -184 YEAR) ;;
+  # }
 
-  dimension_group: dob {
-    hidden: yes
-    type: time
-    description: "%E4Y-%m-%d"
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.dob ;;
-  }
+  # dimension_group: dob {
+  #   hidden: yes
+  #   type: time
+  #   description: "%E4Y-%m-%d"
+  #   timeframes: [
+  #     raw,
+  #     date,
+  #     week,
+  #     month,
+  #     quarter,
+  #     year
+  #   ]
+  #   convert_tz: no
+  #   datatype: date
+  #   sql: ${TABLE}.dob ;;
+  # }
 
-  dimension_group: dob_offset {
-    hidden: yes
-    label: "DOB"
-    type: time
-    description: "%E4Y-%m-%d"
-    timeframes: [
-      raw,
-      date,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: DATE_ADD(DATE(${dob_raw}), INTERVAL -139 YEAR) ;;
-  }
+  # dimension_group: dob_offset {
+  #   hidden: yes
+  #   label: "DOB"
+  #   type: time
+  #   description: "%E4Y-%m-%d"
+  #   timeframes: [
+  #     raw,
+  #     date,
+  #     year
+  #   ]
+  #   convert_tz: no
+  #   datatype: date
+  #   sql: DATE_ADD(DATE(${dob_raw}), INTERVAL -139 YEAR) ;;
+  # }
 
-  dimension_group: los {
-    group_label: "Length of Stay"
-    label: "LOS"
-    type: duration
-    intervals: [hour, day]
-    sql_start: ${admission_offset_date} ;;
-    sql_end: ${discharge_offset_date}  ;;
-  }
+  # dimension_group: los {
+  #   group_label: "Length of Stay"
+  #   label: "LOS"
+  #   type: duration
+  #   intervals: [hour, day]
+  #   sql_start: ${admission_offset_date} ;;
+  #   sql_end: ${discharge_offset_date}  ;;
+  # }
 
-  measure: average_los_days {
-    type: average
-    sql: ${days_los} ;;
-    #group_label: "Length of Stay"
-    label: "Average LOS in Days"
-    value_format_name: decimal_1
-  }
+  # measure: average_los_days {
+  #   type: average
+  #   sql: ${days_los} ;;
+  #   #group_label: "Length of Stay"
+  #   label: "Average LOS in Days"
+  #   value_format_name: decimal_1
+  # }
 
-  dimension: age {
-    label: "(4) Age"
-    type: number
-    sql: DATE_DIFF(CURRENT_DATE(), DATE ${dob_offset_date}, YEAR) + 40 ;;
-  }
+  # dimension: age {
+  #   label: "(4) Age"
+  #   type: number
+  #   sql: DATE_DIFF(CURRENT_DATE(), DATE ${dob_offset_date}, YEAR) + 40 ;;
+  # }
 
-  dimension: age_tier {
-    label: "(5) Age Tier"
-    type: tier
-    tiers: [10, 20, 30, 40, 50, 60, 70, 80, 90]
-    style: integer
-    sql: ${age} ;;
-    full_suggestions: yes
-  }
+  # dimension: age_tier {
+  #   label: "(5) Age Tier"
+  #   type: tier
+  #   tiers: [10, 20, 30, 40, 50, 60, 70, 80, 90]
+  #   style: integer
+  #   sql: ${age} ;;
+  #   full_suggestions: yes
+  # }
 
 ###################### ENTITIES ######################
 
@@ -180,12 +180,12 @@ view: kaggle_clinical_notes_nlp_results {
 
   #Note in this example we did some pre-processing before loading
   #to BigQuery.
-  dimension: preprocessed_text {
-    group_label: "Text"
-    label: "(2) Preprocessed Text"
-    type: string
-    sql: ${TABLE}.preprocessed_text ;;
-  }
+  # dimension: preprocessed_text {
+  #   group_label: "Text"
+  #   label: "(2) Preprocessed Text"
+  #   type: string
+  #   sql: ${TABLE}.preprocessed_text ;;
+  # }
 
   dimension: raw_text {
     group_label: "Text"
@@ -200,7 +200,7 @@ view: kaggle_clinical_notes_nlp_results {
     hidden: no
     group_label: "Text"
     label: "(3) Text (Highlighted) Processed by NLP API"
-    sql: ${preprocessed_text} ;;
+    sql: ${raw_text} ;;
     html:
           {% assign w = kaggle_clinical_notes_nlp_results__entity_mentions.text_list_problem | split: '|RECORD|' %}
           {% assign m = kaggle_clinical_notes_nlp_results__entity_mentions.text_list_medicine | split: '|RECORD|' %}
@@ -511,19 +511,19 @@ view: kaggle_clinical_notes_nlp_results {
 
 ###################### ADDITIONAL PROCESSED TEXT ################
 
-  dimension: service {
-    label: "(6) Service Type"
-    type: string
-    sql: IFNULL(regexp_replace(LOWER(${TABLE}.service),"[^a-zA-Z0-9 -]",' '), "NA") ;;
-    full_suggestions: yes
-  }
+  # dimension: service {
+  #   label: "(6) Service Type"
+  #   type: string
+  #   sql: IFNULL(regexp_replace(LOWER(${TABLE}.service),"[^a-zA-Z0-9 -]",' '), "NA") ;;
+  #   full_suggestions: yes
+  # }
 
-  dimension: sex {
-    label: "(7) Sex"
-    type: string
-    sql: ${TABLE}.sex ;;
-    full_suggestions: yes
-  }
+  # dimension: sex {
+  #   label: "(7) Sex"
+  #   type: string
+  #   sql: ${TABLE}.sex ;;
+  #   full_suggestions: yes
+  # }
 
   measure: count {
     label: "Observation Count"
