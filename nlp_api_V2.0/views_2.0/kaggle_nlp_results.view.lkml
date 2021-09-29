@@ -196,6 +196,34 @@ view: kaggle_clinical_notes_nlp_results {
 
 # regexp_replace(LOWER(title_text),"[^a-zA-Z0-9 -]",'')
 
+
+
+  dimension: text_highlighted_new {
+    hidden: no
+    group_label: "Text"
+    label: "(3) Text (Highlighted) Processed by NLP API - NEW"
+    sql: ${raw_text} ;;
+    html:
+          {% assign problems = kaggle_clinical_notes_nlp_results__entity_mentions.text_list_problem | split: '|RECORD|' %}
+          {% assign medicines = kaggle_clinical_notes_nlp_results__entity_mentions.text_list_medicine | split: '|RECORD|' %}
+          {% assign history = kaggle_clinical_notes_nlp_results__entity_mentions.text_list_clinical_history | split: '|RECORD|' %}
+
+          {% assign parts = value | split: ' ' %}
+          {% for part in parts %}
+            {% assign downPart = part | downcase | remove: "," | remove: "." | remove: "/" | remove: "-" | remove: ";" %}
+            {% if problems contains downPart %}
+              <mark style="color: white; background-color: #4285F4">{{ part }}</mark>
+            {% elsif medicines contains downPart %}
+              <mark style="color: white; background-color: #0F9D58">{{ part }}</mark>
+            {% elsif history contains downPart %}
+              <mark style="color: white; background-color: #F4B400">{{ part }}</mark>
+            {% else %}
+              <span>{{part}}</span>
+            {% endif %}
+          {% endfor %}
+        ;;
+  }
+
   dimension: text_highlighted {
     hidden: no
     group_label: "Text"
