@@ -12,6 +12,20 @@ explore: kaggle_clinical_notes_nlp_results {
   label: "Kaggle NLP Results - Patient Review"
   #This ensures that no patient in the dataset is over 102 years old.
   #sql_always_where: ${dob_year} >= 2058 AND ${admission_offset_year} >= 1996 AND ${age} > 0 AND ${days_los} >= 0 AND ${dob_offset_year} < 2022;;
+
+  # Additiona Luka
+  # Joins in Encounter base view and patient base view from the fhir folder
+  # full unnested joins defined in fhir -> fhir_unnested_explores
+  # join: encounter {
+  #   type: left_outer
+  #   sql_on: ${kaggle_clinical_notes_nlp_results.id} = ${encounter.part_of__encounter_id} ;;
+  #   relationship: many_to_one
+  # }
+  # join: patient {
+  #   type: left_outer
+  #   sql_on: ${kaggle_clinical_notes_nlp_results.id} = ${patient.id} ;;
+  #   relationship: many_to_one
+  # }
 }
 
 
