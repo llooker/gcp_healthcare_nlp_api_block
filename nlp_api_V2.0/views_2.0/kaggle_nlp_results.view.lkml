@@ -742,7 +742,7 @@ view: kaggle_clinical_notes_nlp_results__entity_mentions {
     #group_item_label: "Content"
     link: {
       label: "See Term View for {{ value }}"
-      url: "/dashboards-next/healthcare_nlp_api_2.0::nlp_term_view_2_0?Filter+on+Original+Term=%25{{ value | url_encode }}%25"
+      url: "/dashboards-next/gcp_healthcare_nlp_api_block::nlp_term_view?Filter+on+Original+Term=%25{{ value | url_encode }}%25"
       icon_url: "http://www.looker.com/favicon.ico"
     }
   }

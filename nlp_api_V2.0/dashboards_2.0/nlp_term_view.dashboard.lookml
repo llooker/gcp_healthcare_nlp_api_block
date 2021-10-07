@@ -20,9 +20,9 @@
       \ View\n\t</h1>\n</span>\n<span style=\"padding: 4px; float:right;\">\n\t<a\
       \ style=\"background-color: #fff; color: #5f6368; padding: 5px 10px;\" href=\"\
       /boards/82\">Home</a>\n\t<a style=\"background-color: #fff; color: #5f6368;\
-      \ padding: 5px 10px;\" href=\"/explore/healthcare_nlp_api_2.0/kaggle_nlp_results_terms\"\
+      \ padding: 5px 10px;\" href=\"/explore/gcp_healthcare_nlp_api_block/kaggle_nlp_results_terms\"\
       >Explore the Data</a>\n\t<a style=\"background-color: #fff; color: #5f6368;\
-      \ padding: 5px 10px;\" href=\"/dashboards-next/healthcare_nlp_api_2.0::nlp_patient_view_2_0\"\
+      \ padding: 5px 10px;\" href=\"/dashboards-next/gcp_healthcare_nlp_api_block::nlp_patient_view\"\
       >Go to Patient View</a>\n</span>\n\n<div>"
     row: 0
     col: 0
@@ -30,7 +30,7 @@
     height: 2
   - title: Top LIKELY Current Medications
     name: Top LIKELY Current Medications
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_nlp_results_terms
     type: looker_grid
     fields: [kaggle_clinical_notes_nlp_results__entity_mentions.text__content_medicine,
@@ -110,7 +110,7 @@
     height: 8
   - title: Top LIKELY Current Problems/Conditions
     name: Top LIKELY Current Problems/Conditions
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_nlp_results_terms
     type: looker_grid
     fields: [kaggle_clinical_notes_nlp_results__entity_mentions.term_mention_count,
@@ -192,7 +192,7 @@
     height: 8
   - title: Top LIKELY Clinical History
     name: Top LIKELY Clinical History
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_nlp_results_terms
     type: looker_grid
     fields: [kaggle_clinical_notes_nlp_results__entity_mentions.term_mention_count,
@@ -274,7 +274,7 @@
     height: 8
   - title: Filtered Term View
     name: Filtered Term View
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_nlp_results_terms
     type: looker_grid
     fields: [kaggle_nlp_results_terms.text_list]
@@ -331,7 +331,7 @@
     height: 2
   - title: Count of Mentions
     name: Count of Mentions
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_nlp_results_terms
     type: single_value
     fields: [kaggle_nlp_results_terms.filtered_text_mention_count]
@@ -361,7 +361,7 @@
     height: 2
   - title: Count of Observations
     name: Count of Observations
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_nlp_results_terms
     type: single_value
     fields: [kaggle_nlp_results_terms.filtered_text_observation_count]
@@ -391,7 +391,7 @@
     height: 2
   - title: Count of Filtered Distinct Terms
     name: Count of Filtered Distinct Terms
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_nlp_results_terms
     type: single_value
     fields: [kaggle_nlp_results_terms.filtered_text_distinct_count]
@@ -421,7 +421,7 @@
     height: 2
   - title: Count of Patients
     name: Count of Patients
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_nlp_results_terms
     type: single_value
     fields: [kaggle_nlp_results_terms.filtered_patient_distinct_count, kaggle_nlp_results_terms.filtered_text_observation_count]
@@ -449,270 +449,270 @@
     col: 0
     width: 4
     height: 2
-  - title: Visit Service Type Summary
-    name: Visit Service Type Summary
-    model: healthcare_nlp_api_2.0
-    explore: kaggle_nlp_results_terms
-    type: looker_pie
-    fields: [kaggle_nlp_results_terms.filtered_patient_distinct_count, kaggle_clinical_notes_nlp_results.service]
-    sorts: [kaggle_nlp_results_terms.filtered_patient_distinct_count desc]
-    limit: 500
-    column_limit: 50
-    value_labels: legend
-    label_type: labPer
-    inner_radius: 50
-    color_application:
-      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
-      options:
-        steps: 5
-    series_colors: {}
-    custom_color_enabled: true
-    custom_color: "#EA4335"
-    show_single_value_title: true
-    single_value_title: Count of Patients
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    series_types: {}
-    defaults_version: 1
-    listen:
-      Filter on Original Term: kaggle_nlp_results_terms.filter_on_original_term
-    row: 22
-    col: 0
-    width: 8
-    height: 8
-  - title: Patient Age Tier Summary
-    name: Patient Age Tier Summary
-    model: healthcare_nlp_api_2.0
-    explore: kaggle_nlp_results_terms
-    type: looker_column
-    fields: [kaggle_nlp_results_terms.filtered_patient_distinct_count, kaggle_clinical_notes_nlp_results.age_tier,
-      kaggle_clinical_notes_nlp_results.sex]
-    pivots: [kaggle_clinical_notes_nlp_results.sex]
-    fill_fields: [kaggle_clinical_notes_nlp_results.age_tier]
-    sorts: [kaggle_clinical_notes_nlp_results.age_tier, kaggle_clinical_notes_nlp_results.sex]
-    limit: 500
-    column_limit: 50
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: false
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: normal
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: true
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: true
-    show_silhouette: false
-    totals_color: "#808080"
-    color_application:
-      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
-      options:
-        steps: 5
-    y_axes: [{label: Count of Patients, orientation: left, series: [{axisId: kaggle_nlp_results_terms.filtered_patient_distinct_count,
-            id: kaggle_nlp_results_terms.filtered_patient_distinct_count, name: Filtered
-              Patient Distinct Count}], showLabels: true, showValues: true, unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear}]
-    series_types: {}
-    series_colors:
-      kaggle_nlp_results_terms.filtered_patient_distinct_count: "#E52592"
-      F - kaggle_nlp_results_terms.filtered_patient_distinct_count: "#EA4335"
-    column_spacing_ratio: 0
-    column_group_spacing_ratio: 0
-    value_labels: legend
-    label_type: labPer
-    inner_radius: 50
-    custom_color_enabled: true
-    custom_color: "#EA4335"
-    show_single_value_title: true
-    single_value_title: Count of Patients
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    defaults_version: 1
-    listen:
-      Filter on Original Term: kaggle_nlp_results_terms.filter_on_original_term
-    row: 22
-    col: 8
-    width: 8
-    height: 8
-  - title: Patient Gender Summary
-    name: Patient Gender Summary
-    model: healthcare_nlp_api_2.0
-    explore: kaggle_nlp_results_terms
-    type: looker_pie
-    fields: [kaggle_nlp_results_terms.filtered_patient_distinct_count, kaggle_clinical_notes_nlp_results.sex]
-    sorts: [kaggle_nlp_results_terms.filtered_patient_distinct_count desc]
-    limit: 500
-    column_limit: 50
-    value_labels: legend
-    label_type: labPer
-    inner_radius: 50
-    color_application:
-      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
-      options:
-        steps: 5
-    series_colors:
-      kaggle_nlp_results_terms.filtered_patient_distinct_count: "#E52592"
-      M: "#12B5CB"
-      F: "#EA4335"
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    y_axes: [{label: Count of Patients, orientation: left, series: [{axisId: kaggle_nlp_results_terms.filtered_patient_distinct_count,
-            id: kaggle_nlp_results_terms.filtered_patient_distinct_count, name: Filtered
-              Patient Distinct Count}], showLabels: true, showValues: true, unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear}]
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: false
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    series_types: {}
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    column_spacing_ratio: 0
-    column_group_spacing_ratio: 0
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    custom_color_enabled: true
-    custom_color: "#EA4335"
-    show_single_value_title: true
-    single_value_title: Count of Patients
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    defaults_version: 1
-    listen:
-      Filter on Original Term: kaggle_nlp_results_terms.filter_on_original_term
-    row: 22
-    col: 16
-    width: 8
-    height: 8
-  - title: Average LOS in Days
-    name: Average LOS in Days
-    model: healthcare_nlp_api_2.0
-    explore: kaggle_nlp_results_terms
-    type: single_value
-    fields: [kaggle_clinical_notes_nlp_results.average_los_days]
-    limit: 500
-    column_limit: 50
-    dynamic_fields: [{category: table_calculation, expression: '4.5/${kaggle_clinical_notes_nlp_results.average_los_days}',
-        label: National Average LOS, value_format: !!null '', value_format_name: percent_1,
-        _kind_hint: measure, table_calculation: national_average_los, _type_hint: number}]
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: true
-    show_comparison_label: true
-    enable_conditional_formatting: true
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    color_application:
-      collection_id: google
-      palette_id: google-categorical-0
-      options:
-        steps: 5
-    custom_color: "#EA4335"
-    single_value_title: Average LOS in Days
-    conditional_formatting: [{type: not null, value: !!null '', background_color: "#12B5CB",
-        font_color: "#ffffff", color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2,
-          palette_id: 4a00499b-c0fe-4b15-a304-4083c07ff4c4}, bold: false, italic: false,
-        strikethrough: false, fields: !!null ''}]
-    value_labels: legend
-    label_type: labPer
-    inner_radius: 50
-    series_colors:
-      kaggle_nlp_results_terms.filtered_patient_distinct_count: "#E52592"
-      M: "#12B5CB"
-      F: "#EA4335"
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    y_axes: [{label: Count of Patients, orientation: left, series: [{axisId: kaggle_nlp_results_terms.filtered_patient_distinct_count,
-            id: kaggle_nlp_results_terms.filtered_patient_distinct_count, name: Filtered
-              Patient Distinct Count}], showLabels: true, showValues: true, unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear}]
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: false
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    series_types: {}
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    column_spacing_ratio: 0
-    column_group_spacing_ratio: 0
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    defaults_version: 1
-    listen:
-      Filter on Original Term: kaggle_nlp_results_terms.filter_on_original_term
-    row: 9
-    col: 0
-    width: 8
-    height: 2
+  # - title: Visit Service Type Summary
+  #   name: Visit Service Type Summary
+  #   model: gcp_healthcare_nlp_api_block
+  #   explore: kaggle_nlp_results_terms
+  #   type: looker_pie
+  #   fields: [kaggle_nlp_results_terms.filtered_patient_distinct_count, kaggle_clinical_notes_nlp_results.service]
+  #   sorts: [kaggle_nlp_results_terms.filtered_patient_distinct_count desc]
+  #   limit: 500
+  #   column_limit: 50
+  #   value_labels: legend
+  #   label_type: labPer
+  #   inner_radius: 50
+  #   color_application:
+  #     collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+  #     palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+  #     options:
+  #       steps: 5
+  #   series_colors: {}
+  #   custom_color_enabled: true
+  #   custom_color: "#EA4335"
+  #   show_single_value_title: true
+  #   single_value_title: Count of Patients
+  #   show_comparison: false
+  #   comparison_type: value
+  #   comparison_reverse_colors: false
+  #   show_comparison_label: true
+  #   enable_conditional_formatting: false
+  #   conditional_formatting_include_totals: false
+  #   conditional_formatting_include_nulls: false
+  #   series_types: {}
+  #   defaults_version: 1
+  #   listen:
+  #     Filter on Original Term: kaggle_nlp_results_terms.filter_on_original_term
+  #   row: 22
+  #   col: 0
+  #   width: 8
+  #   height: 8
+  # - title: Patient Age Tier Summary
+  #   name: Patient Age Tier Summary
+  #   model: gcp_healthcare_nlp_api_block
+  #   explore: kaggle_nlp_results_terms
+  #   type: looker_column
+  #   fields: [kaggle_nlp_results_terms.filtered_patient_distinct_count, kaggle_clinical_notes_nlp_results.age_tier,
+  #     kaggle_clinical_notes_nlp_results.sex]
+  #   pivots: [kaggle_clinical_notes_nlp_results.sex]
+  #   fill_fields: [kaggle_clinical_notes_nlp_results.age_tier]
+  #   sorts: [kaggle_clinical_notes_nlp_results.age_tier, kaggle_clinical_notes_nlp_results.sex]
+  #   limit: 500
+  #   column_limit: 50
+  #   x_axis_gridlines: false
+  #   y_axis_gridlines: true
+  #   show_view_names: false
+  #   show_y_axis_labels: true
+  #   show_y_axis_ticks: true
+  #   y_axis_tick_density: default
+  #   y_axis_tick_density_custom: 5
+  #   show_x_axis_label: false
+  #   show_x_axis_ticks: true
+  #   y_axis_scale_mode: linear
+  #   x_axis_reversed: false
+  #   y_axis_reversed: false
+  #   plot_size_by_field: false
+  #   trellis: ''
+  #   stacking: normal
+  #   limit_displayed_rows: false
+  #   legend_position: center
+  #   point_style: none
+  #   show_value_labels: true
+  #   label_density: 25
+  #   x_axis_scale: auto
+  #   y_axis_combined: true
+  #   ordering: none
+  #   show_null_labels: false
+  #   show_totals_labels: true
+  #   show_silhouette: false
+  #   totals_color: "#808080"
+  #   color_application:
+  #     collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+  #     palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+  #     options:
+  #       steps: 5
+  #   y_axes: [{label: Count of Patients, orientation: left, series: [{axisId: kaggle_nlp_results_terms.filtered_patient_distinct_count,
+  #           id: kaggle_nlp_results_terms.filtered_patient_distinct_count, name: Filtered
+  #             Patient Distinct Count}], showLabels: true, showValues: true, unpinAxis: false,
+  #       tickDensity: default, tickDensityCustom: 5, type: linear}]
+  #   series_types: {}
+  #   series_colors:
+  #     kaggle_nlp_results_terms.filtered_patient_distinct_count: "#E52592"
+  #     F - kaggle_nlp_results_terms.filtered_patient_distinct_count: "#EA4335"
+  #   column_spacing_ratio: 0
+  #   column_group_spacing_ratio: 0
+  #   value_labels: legend
+  #   label_type: labPer
+  #   inner_radius: 50
+  #   custom_color_enabled: true
+  #   custom_color: "#EA4335"
+  #   show_single_value_title: true
+  #   single_value_title: Count of Patients
+  #   show_comparison: false
+  #   comparison_type: value
+  #   comparison_reverse_colors: false
+  #   show_comparison_label: true
+  #   enable_conditional_formatting: false
+  #   conditional_formatting_include_totals: false
+  #   conditional_formatting_include_nulls: false
+  #   defaults_version: 1
+  #   listen:
+  #     Filter on Original Term: kaggle_nlp_results_terms.filter_on_original_term
+  #   row: 22
+  #   col: 8
+  #   width: 8
+  #   height: 8
+  # - title: Patient Gender Summary
+  #   name: Patient Gender Summary
+  #   model: gcp_healthcare_nlp_api_block
+  #   explore: kaggle_nlp_results_terms
+  #   type: looker_pie
+  #   fields: [kaggle_nlp_results_terms.filtered_patient_distinct_count, kaggle_clinical_notes_nlp_results.sex]
+  #   sorts: [kaggle_nlp_results_terms.filtered_patient_distinct_count desc]
+  #   limit: 500
+  #   column_limit: 50
+  #   value_labels: legend
+  #   label_type: labPer
+  #   inner_radius: 50
+  #   color_application:
+  #     collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+  #     palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+  #     options:
+  #       steps: 5
+  #   series_colors:
+  #     kaggle_nlp_results_terms.filtered_patient_distinct_count: "#E52592"
+  #     M: "#12B5CB"
+  #     F: "#EA4335"
+  #   x_axis_gridlines: false
+  #   y_axis_gridlines: true
+  #   show_view_names: false
+  #   y_axes: [{label: Count of Patients, orientation: left, series: [{axisId: kaggle_nlp_results_terms.filtered_patient_distinct_count,
+  #           id: kaggle_nlp_results_terms.filtered_patient_distinct_count, name: Filtered
+  #             Patient Distinct Count}], showLabels: true, showValues: true, unpinAxis: false,
+  #       tickDensity: default, tickDensityCustom: 5, type: linear}]
+  #   show_y_axis_labels: true
+  #   show_y_axis_ticks: true
+  #   y_axis_tick_density: default
+  #   y_axis_tick_density_custom: 5
+  #   show_x_axis_label: false
+  #   show_x_axis_ticks: true
+  #   y_axis_scale_mode: linear
+  #   x_axis_reversed: false
+  #   y_axis_reversed: false
+  #   plot_size_by_field: false
+  #   trellis: ''
+  #   stacking: ''
+  #   limit_displayed_rows: false
+  #   legend_position: center
+  #   series_types: {}
+  #   point_style: none
+  #   show_value_labels: false
+  #   label_density: 25
+  #   x_axis_scale: auto
+  #   y_axis_combined: true
+  #   ordering: none
+  #   show_null_labels: false
+  #   column_spacing_ratio: 0
+  #   column_group_spacing_ratio: 0
+  #   show_totals_labels: false
+  #   show_silhouette: false
+  #   totals_color: "#808080"
+  #   custom_color_enabled: true
+  #   custom_color: "#EA4335"
+  #   show_single_value_title: true
+  #   single_value_title: Count of Patients
+  #   show_comparison: false
+  #   comparison_type: value
+  #   comparison_reverse_colors: false
+  #   show_comparison_label: true
+  #   enable_conditional_formatting: false
+  #   conditional_formatting_include_totals: false
+  #   conditional_formatting_include_nulls: false
+  #   defaults_version: 1
+  #   listen:
+  #     Filter on Original Term: kaggle_nlp_results_terms.filter_on_original_term
+  #   row: 22
+  #   col: 16
+  #   width: 8
+  #   height: 8
+  # - title: Average LOS in Days
+  #   name: Average LOS in Days
+  #   model: gcp_healthcare_nlp_api_block
+  #   explore: kaggle_nlp_results_terms
+  #   type: single_value
+  #   fields: [kaggle_clinical_notes_nlp_results.average_los_days]
+  #   limit: 500
+  #   column_limit: 50
+  #   dynamic_fields: [{category: table_calculation, expression: '4.5/${kaggle_clinical_notes_nlp_results.average_los_days}',
+  #       label: National Average LOS, value_format: !!null '', value_format_name: percent_1,
+  #       _kind_hint: measure, table_calculation: national_average_los, _type_hint: number}]
+  #   custom_color_enabled: true
+  #   show_single_value_title: true
+  #   show_comparison: true
+  #   comparison_type: change
+  #   comparison_reverse_colors: true
+  #   show_comparison_label: true
+  #   enable_conditional_formatting: true
+  #   conditional_formatting_include_totals: false
+  #   conditional_formatting_include_nulls: false
+  #   color_application:
+  #     collection_id: google
+  #     palette_id: google-categorical-0
+  #     options:
+  #       steps: 5
+  #   custom_color: "#EA4335"
+  #   single_value_title: Average LOS in Days
+  #   conditional_formatting: [{type: not null, value: !!null '', background_color: "#12B5CB",
+  #       font_color: "#ffffff", color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2,
+  #         palette_id: 4a00499b-c0fe-4b15-a304-4083c07ff4c4}, bold: false, italic: false,
+  #       strikethrough: false, fields: !!null ''}]
+  #   value_labels: legend
+  #   label_type: labPer
+  #   inner_radius: 50
+  #   series_colors:
+  #     kaggle_nlp_results_terms.filtered_patient_distinct_count: "#E52592"
+  #     M: "#12B5CB"
+  #     F: "#EA4335"
+  #   x_axis_gridlines: false
+  #   y_axis_gridlines: true
+  #   show_view_names: false
+  #   y_axes: [{label: Count of Patients, orientation: left, series: [{axisId: kaggle_nlp_results_terms.filtered_patient_distinct_count,
+  #           id: kaggle_nlp_results_terms.filtered_patient_distinct_count, name: Filtered
+  #             Patient Distinct Count}], showLabels: true, showValues: true, unpinAxis: false,
+  #       tickDensity: default, tickDensityCustom: 5, type: linear}]
+  #   show_y_axis_labels: true
+  #   show_y_axis_ticks: true
+  #   y_axis_tick_density: default
+  #   y_axis_tick_density_custom: 5
+  #   show_x_axis_label: false
+  #   show_x_axis_ticks: true
+  #   y_axis_scale_mode: linear
+  #   x_axis_reversed: false
+  #   y_axis_reversed: false
+  #   plot_size_by_field: false
+  #   trellis: ''
+  #   stacking: ''
+  #   limit_displayed_rows: false
+  #   legend_position: center
+  #   series_types: {}
+  #   point_style: none
+  #   show_value_labels: false
+  #   label_density: 25
+  #   x_axis_scale: auto
+  #   y_axis_combined: true
+  #   ordering: none
+  #   show_null_labels: false
+  #   column_spacing_ratio: 0
+  #   column_group_spacing_ratio: 0
+  #   show_totals_labels: false
+  #   show_silhouette: false
+  #   totals_color: "#808080"
+  #   defaults_version: 1
+  #   listen:
+  #     Filter on Original Term: kaggle_nlp_results_terms.filter_on_original_term
+  #   row: 9
+  #   col: 0
+  #   width: 8
+  #   height: 2
   - name: " (3)"
     type: text
     title_text: ''

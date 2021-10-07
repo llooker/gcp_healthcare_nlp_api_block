@@ -22,7 +22,7 @@
       /boards/82\">Home</a>\n\t<a style=\"background-color: #fff; color: #5f6368;\
       \ padding: 5px 10px;\" href=\"https://cloud.google.com/healthcare/docs/how-tos/nlp\"\
       >NLP API Documentation</a>\n\t<a style=\"background-color: #fff; color: #5f6368;\
-      \ padding: 5px 10px;\" href=\"/dashboards-next/healthcare_nlp_api_2.0::nlp_term_view_2_0\"\
+      \ padding: 5px 10px;\" href=\"/dashboards-next/gcp_healthcare_nlp_api_block::nlp_term_view\"\
       >Go to Term View</a>\n</span>\n\n<div>"
     row: 0
     col: 0
@@ -30,7 +30,7 @@
     height: 2
   - title: Highlighted Observation Text
     name: Highlighted Observation Text
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_clinical_notes_nlp_results
     type: looker_grid
     fields: [kaggle_clinical_notes_nlp_results.id, kaggle_clinical_notes_nlp_results.text_highlighted]
@@ -69,181 +69,181 @@
     header_background_color: "#E8EAED"
     defaults_version: 1
     hidden_fields: [kaggle_clinical_notes_nlp_results.id]
-    listen:
-      Patient ID: kaggle_clinical_notes_nlp_results.patient_id
+    # listen:
+    #   Patient ID: kaggle_clinical_notes_nlp_results.patient_id
     row: 4
     col: 8
     width: 16
     height: 10
-  - title: Age
-    name: Age
-    model: healthcare_nlp_api_2.0
-    explore: kaggle_clinical_notes_nlp_results
-    type: single_value
-    fields: [kaggle_clinical_notes_nlp_results.age]
-    sorts: [kaggle_clinical_notes_nlp_results.age desc]
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#EA4335"
-    single_value_title: Years of Age
-    series_types: {}
-    defaults_version: 1
-    listen:
-      Patient ID: kaggle_clinical_notes_nlp_results.patient_id
-    row: 4
-    col: 0
-    width: 4
-    height: 3
-  - title: Sex
-    name: Sex
-    model: healthcare_nlp_api_2.0
-    explore: kaggle_clinical_notes_nlp_results
-    type: single_value
-    fields: [kaggle_clinical_notes_nlp_results.sex]
-    sorts: [kaggle_clinical_notes_nlp_results.sex]
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#EA4335"
-    single_value_title: Sex
-    series_types: {}
-    defaults_version: 1
-    listen:
-      Patient ID: kaggle_clinical_notes_nlp_results.patient_id
-    row: 7
-    col: 0
-    width: 4
-    height: 3
-  - title: Avg LOS
-    name: Avg LOS
-    model: healthcare_nlp_api_2.0
-    explore: kaggle_clinical_notes_nlp_results
-    type: single_value
-    fields: [kaggle_clinical_notes_nlp_results.average_los_days]
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#EA4335"
-    single_value_title: Average LOS in Days
-    series_types: {}
-    defaults_version: 1
-    listen:
-      Patient ID: kaggle_clinical_notes_nlp_results.patient_id
-    row: 4
-    col: 4
-    width: 4
-    height: 3
-  - title: Avg LOS - All
-    name: Avg LOS - All
-    model: healthcare_nlp_api_2.0
-    explore: kaggle_clinical_notes_nlp_results
-    type: single_value
-    fields: [kaggle_clinical_notes_nlp_results.average_los_days]
-    sorts: [kaggle_clinical_notes_nlp_results.average_los_days desc]
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#EA4335"
-    single_value_title: Average LOS in Days (All Patients)
-    series_types: {}
-    defaults_version: 1
-    listen: {}
-    row: 7
-    col: 4
-    width: 4
-    height: 3
-  - title: Last Visit Service Type
-    name: Last Visit Service Type
-    model: healthcare_nlp_api_2.0
-    explore: kaggle_clinical_notes_nlp_results
-    type: single_value
-    fields: [kaggle_clinical_notes_nlp_results.service]
-    sorts: [kaggle_clinical_notes_nlp_results.service desc]
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#5F6368"
-    single_value_title: Last Visit Service Type
-    series_types: {}
-    defaults_version: 1
-    listen:
-      Patient ID: kaggle_clinical_notes_nlp_results.patient_id
-    row: 2
-    col: 8
-    width: 8
-    height: 2
-  - title: Selected Patient
-    name: Selected Patient
-    model: healthcare_nlp_api_2.0
-    explore: kaggle_clinical_notes_nlp_results
-    type: single_value
-    fields: [kaggle_clinical_notes_nlp_results.patient_id]
-    sorts: [kaggle_clinical_notes_nlp_results.patient_id]
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#5F6368"
-    single_value_title: Selected Patient
-    series_types: {}
-    defaults_version: 1
-    listen:
-      Patient ID: kaggle_clinical_notes_nlp_results.patient_id
-    row: 2
-    col: 0
-    width: 8
-    height: 2
+  # - title: Age
+  #   name: Age
+  #   model: gcp_healthcare_nlp_api_block
+  #   explore: kaggle_clinical_notes_nlp_results
+  #   type: single_value
+  #   fields: [kaggle_clinical_notes_nlp_results.age]
+  #   sorts: [kaggle_clinical_notes_nlp_results.age desc]
+  #   limit: 500
+  #   column_limit: 50
+  #   custom_color_enabled: true
+  #   show_single_value_title: true
+  #   show_comparison: false
+  #   comparison_type: value
+  #   comparison_reverse_colors: false
+  #   show_comparison_label: true
+  #   enable_conditional_formatting: false
+  #   conditional_formatting_include_totals: false
+  #   conditional_formatting_include_nulls: false
+  #   custom_color: "#EA4335"
+  #   single_value_title: Years of Age
+  #   series_types: {}
+  #   defaults_version: 1
+  #   listen:
+  #     Patient ID: kaggle_clinical_notes_nlp_results.patient_id
+  #   row: 4
+  #   col: 0
+  #   width: 4
+  #   height: 3
+  # - title: Sex
+  #   name: Sex
+  #   model: gcp_healthcare_nlp_api_block
+  #   explore: kaggle_clinical_notes_nlp_results
+  #   type: single_value
+  #   fields: [kaggle_clinical_notes_nlp_results.sex]
+  #   sorts: [kaggle_clinical_notes_nlp_results.sex]
+  #   limit: 500
+  #   column_limit: 50
+  #   custom_color_enabled: true
+  #   show_single_value_title: true
+  #   show_comparison: false
+  #   comparison_type: value
+  #   comparison_reverse_colors: false
+  #   show_comparison_label: true
+  #   enable_conditional_formatting: false
+  #   conditional_formatting_include_totals: false
+  #   conditional_formatting_include_nulls: false
+  #   custom_color: "#EA4335"
+  #   single_value_title: Sex
+  #   series_types: {}
+  #   defaults_version: 1
+  #   listen:
+  #     Patient ID: kaggle_clinical_notes_nlp_results.patient_id
+  #   row: 7
+  #   col: 0
+  #   width: 4
+  #   height: 3
+  # - title: Avg LOS
+  #   name: Avg LOS
+  #   model: gcp_healthcare_nlp_api_block
+  #   explore: kaggle_clinical_notes_nlp_results
+  #   type: single_value
+  #   fields: [kaggle_clinical_notes_nlp_results.average_los_days]
+  #   limit: 500
+  #   column_limit: 50
+  #   custom_color_enabled: true
+  #   show_single_value_title: true
+  #   show_comparison: false
+  #   comparison_type: value
+  #   comparison_reverse_colors: false
+  #   show_comparison_label: true
+  #   enable_conditional_formatting: false
+  #   conditional_formatting_include_totals: false
+  #   conditional_formatting_include_nulls: false
+  #   custom_color: "#EA4335"
+  #   single_value_title: Average LOS in Days
+  #   series_types: {}
+  #   defaults_version: 1
+  #   listen:
+  #     Patient ID: kaggle_clinical_notes_nlp_results.patient_id
+  #   row: 4
+  #   col: 4
+  #   width: 4
+  #   height: 3
+  # - title: Avg LOS - All
+  #   name: Avg LOS - All
+  #   model: gcp_healthcare_nlp_api_block
+  #   explore: kaggle_clinical_notes_nlp_results
+  #   type: single_value
+  #   fields: [kaggle_clinical_notes_nlp_results.average_los_days]
+  #   sorts: [kaggle_clinical_notes_nlp_results.average_los_days desc]
+  #   limit: 500
+  #   column_limit: 50
+  #   custom_color_enabled: true
+  #   show_single_value_title: true
+  #   show_comparison: false
+  #   comparison_type: value
+  #   comparison_reverse_colors: false
+  #   show_comparison_label: true
+  #   enable_conditional_formatting: false
+  #   conditional_formatting_include_totals: false
+  #   conditional_formatting_include_nulls: false
+  #   custom_color: "#EA4335"
+  #   single_value_title: Average LOS in Days (All Patients)
+  #   series_types: {}
+  #   defaults_version: 1
+  #   listen: {}
+  #   row: 7
+  #   col: 4
+  #   width: 4
+  #   height: 3
+  # - title: Last Visit Service Type
+  #   name: Last Visit Service Type
+  #   model: gcp_healthcare_nlp_api_block
+  #   explore: kaggle_clinical_notes_nlp_results
+  #   type: single_value
+  #   fields: [kaggle_clinical_notes_nlp_results.service]
+  #   sorts: [kaggle_clinical_notes_nlp_results.service desc]
+  #   limit: 500
+  #   column_limit: 50
+  #   custom_color_enabled: true
+  #   show_single_value_title: true
+  #   show_comparison: false
+  #   comparison_type: value
+  #   comparison_reverse_colors: false
+  #   show_comparison_label: true
+  #   enable_conditional_formatting: false
+  #   conditional_formatting_include_totals: false
+  #   conditional_formatting_include_nulls: false
+  #   custom_color: "#5F6368"
+  #   single_value_title: Last Visit Service Type
+  #   series_types: {}
+  #   defaults_version: 1
+  #   listen:
+  #     Patient ID: kaggle_clinical_notes_nlp_results.patient_id
+  #   row: 2
+  #   col: 8
+  #   width: 8
+  #   height: 2
+  # - title: Selected Patient
+  #   name: Selected Patient
+  #   model: gcp_healthcare_nlp_api_block
+  #   explore: kaggle_clinical_notes_nlp_results
+  #   type: single_value
+  #   fields: [kaggle_clinical_notes_nlp_results.patient_id]
+  #   sorts: [kaggle_clinical_notes_nlp_results.patient_id]
+  #   limit: 500
+  #   column_limit: 50
+  #   custom_color_enabled: true
+  #   show_single_value_title: true
+  #   show_comparison: false
+  #   comparison_type: value
+  #   comparison_reverse_colors: false
+  #   show_comparison_label: true
+  #   enable_conditional_formatting: false
+  #   conditional_formatting_include_totals: false
+  #   conditional_formatting_include_nulls: false
+  #   custom_color: "#5F6368"
+  #   single_value_title: Selected Patient
+  #   series_types: {}
+  #   defaults_version: 1
+  #   listen:
+  #     Patient ID: kaggle_clinical_notes_nlp_results.patient_id
+  #   row: 2
+  #   col: 0
+  #   width: 8
+  #   height: 2
   - title: Has Allergies (Y/N)
     name: Has Allergies (Y/N)
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_clinical_notes_nlp_results
     type: single_value
     fields: [kaggle_clinical_notes_nlp_results__entity_mentions.has_allergies]
@@ -264,15 +264,15 @@
     single_value_title: Has Allergies? (Y/N)
     series_types: {}
     defaults_version: 1
-    listen:
-      Patient ID: kaggle_clinical_notes_nlp_results.patient_id
+    # listen:
+    #   Patient ID: kaggle_clinical_notes_nlp_results.patient_id
     row: 2
     col: 16
     width: 8
     height: 2
   - title: LIKELY Current Medications
     name: LIKELY Current Medications
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_clinical_notes_nlp_results
     type: looker_grid
     fields: [kaggle_clinical_notes_nlp_results__entity_mentions.text__begin_offset,
@@ -337,15 +337,15 @@
     totals_color: "#808080"
     defaults_version: 1
     series_types: {}
-    listen:
-      Patient ID: kaggle_clinical_notes_nlp_results.patient_id
+    # listen:
+    #   Patient ID: kaggle_clinical_notes_nlp_results.patient_id
     row: 14
     col: 8
     width: 8
     height: 9
   - title: LIKELY Clinical History
     name: LIKELY Clinical History
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_clinical_notes_nlp_results
     type: looker_grid
     fields: [kaggle_clinical_notes_nlp_results__entity_mentions.text__begin_offset,
@@ -416,15 +416,15 @@
     totals_color: "#808080"
     defaults_version: 1
     series_types: {}
-    listen:
-      Patient ID: kaggle_clinical_notes_nlp_results.patient_id
+    # listen:
+    #   Patient ID: kaggle_clinical_notes_nlp_results.patient_id
     row: 14
     col: 16
     width: 8
     height: 9
   - title: LIKELY Current Problems/Conditions
     name: LIKELY Current Problems/Conditions
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_clinical_notes_nlp_results
     type: looker_grid
     fields: [kaggle_clinical_notes_nlp_results__entity_mentions.text__begin_offset,
@@ -489,15 +489,15 @@
     totals_color: "#808080"
     defaults_version: 1
     series_types: {}
-    listen:
-      Patient ID: kaggle_clinical_notes_nlp_results.patient_id
+    # listen:
+    #   Patient ID: kaggle_clinical_notes_nlp_results.patient_id
     row: 14
     col: 0
     width: 8
     height: 9
   - title: Vocabulary Coding
     name: Vocabulary Coding
-    model: healthcare_nlp_api_2.0
+    model: gcp_healthcare_nlp_api_block
     explore: kaggle_clinical_notes_nlp_results
     type: looker_grid
     fields: [kaggle_clinical_notes_nlp_results__entity_mentions.text__content, kaggle_clinical_notes_nlp_results__entity_mentions.type,
@@ -536,8 +536,8 @@
     header_background_color: "#E8EAED"
     defaults_version: 1
     series_types: {}
-    listen:
-      Patient ID: kaggle_clinical_notes_nlp_results.patient_id
+    # listen:
+    #   Patient ID: kaggle_clinical_notes_nlp_results.patient_id
     row: 10
     col: 0
     width: 8
@@ -557,18 +557,20 @@
     col: 19
     width: 5
     height: 2
-  filters:
-  - name: Patient ID
-    title: Patient ID
-    type: field_filter
-    default_value: 2002-08-05M
-    allow_multiple_values: true
-    required: true
-    ui_config:
-      type: dropdown_menu
-      display: inline
-      options: []
-    model: healthcare_nlp_api_2.0
-    explore: kaggle_clinical_notes_nlp_results
-    listens_to_filters: []
-    field: kaggle_clinical_notes_nlp_results.patient_id
+  # patient_id is commented out in kaggle_clinical_notes_nlp_results (not a part of standard output for schema
+  # so commenting out this filter for now
+  # filters:
+  # - name: Patient ID
+  #   title: Patient ID
+  #   type: field_filter
+  #   default_value: 2002-08-05M
+  #   allow_multiple_values: true
+  #   required: true
+  #   ui_config:
+  #     type: dropdown_menu
+  #     display: inline
+  #     options: []
+  #   model: gcp_healthcare_nlp_api_block
+  #   explore: kaggle_clinical_notes_nlp_results
+  #   listens_to_filters: []
+  #   field: kaggle_clinical_notes_nlp_results.patient_id
