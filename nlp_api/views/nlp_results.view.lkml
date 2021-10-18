@@ -1,8 +1,8 @@
 ####################################################
 # The name of this view in Looker is "Kaggle Clinical Notes Nlp Results"
-view: kaggle_clinical_notes_nlp_results {
+view: clinical_notes_nlp_results {
   label: "NLP Results - Overview"
-  sql_table_name: `looker-private-demo.healthcare_api_sandbox.kaggle_clinical_notes_nlp_results`
+  sql_table_name: `@{NLP_RESULTS_SCOPED_TABLE_PATH}`
     ;;
   drill_fields: [id]
 
@@ -32,22 +32,22 @@ view: kaggle_clinical_notes_nlp_results {
 
 ######################  DATES ######################
 
-  # dimension_group: admission {
-  #   hidden: yes
-  #   type: time
-  #   description: "%E4Y-%m-%d"
-  #   timeframes: [
-  #     raw,
-  #     date,
-  #     week,
-  #     month,
-  #     quarter,
-  #     year
-  #   ]
-  #   convert_tz: no
-  #   datatype: date
-  #   sql: ${TABLE}.admission_date ;;
-  # }
+  dimension_group: admission {
+    # hidden: yes
+    type: time
+    description: "%E4Y-%m-%d"
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.admission_date ;;
+  }
 
   # dimension_group: admission_offset {
   #   label: "(2) Admission"
@@ -204,9 +204,9 @@ view: kaggle_clinical_notes_nlp_results {
     label: "(3) Text (Highlighted) Processed by NLP API - NEW"
     sql: ${raw_text} ;;
     html:
-          {% assign problems = kaggle_clinical_notes_nlp_results__entity_mentions.text_list_problem | split: '|RECORD|' %}
-          {% assign medicines = kaggle_clinical_notes_nlp_results__entity_mentions.text_list_medicine | split: '|RECORD|' %}
-          {% assign history = kaggle_clinical_notes_nlp_results__entity_mentions.text_list_clinical_history | split: '|RECORD|' %}
+          {% assign problems = clinical_notes_nlp_results__entity_mentions.text_list_problem | split: '|RECORD|' %}
+          {% assign medicines = clinical_notes_nlp_results__entity_mentions.text_list_medicine | split: '|RECORD|' %}
+          {% assign history = clinical_notes_nlp_results__entity_mentions.text_list_clinical_history | split: '|RECORD|' %}
 
           {% assign parts = value | split: ' ' %}
           {% for part in parts %}
@@ -230,9 +230,9 @@ view: kaggle_clinical_notes_nlp_results {
     label: "(3) Text (Highlighted) Processed by NLP API"
     sql: ${raw_text} ;;
     html:
-          {% assign w = kaggle_clinical_notes_nlp_results__entity_mentions.text_list_problem | split: '|RECORD|' %}
-          {% assign m = kaggle_clinical_notes_nlp_results__entity_mentions.text_list_medicine | split: '|RECORD|' %}
-          {% assign s = kaggle_clinical_notes_nlp_results__entity_mentions.text_list_clinical_history| split: '|RECORD|' %}
+          {% assign w = clinical_notes_nlp_results__entity_mentions.text_list_problem | split: '|RECORD|' %}
+          {% assign m = clinical_notes_nlp_results__entity_mentions.text_list_medicine | split: '|RECORD|' %}
+          {% assign s = clinical_notes_nlp_results__entity_mentions.text_list_clinical_history| split: '|RECORD|' %}
 
           {% if w[0] %} {% assign w0 = w[0] %} {% else %} {% assign w0 = 'zzzzzzz' %} {% endif %}
           {% if w[1] %} {% assign w1 = w[1] %} {% else %} {% assign w1 = 'zzzzzzz' %} {% endif %}
@@ -560,8 +560,8 @@ view: kaggle_clinical_notes_nlp_results {
   }
 }
 
-# The name of this view in Looker is "Kaggle Clinical Notes Nlp Results Entities"
-view: kaggle_clinical_notes_nlp_results__entities {
+# The name of this view in Looker is "Clinical Notes Nlp Results Entities"
+view: clinical_notes_nlp_results__entities {
   label: "NLP Results - Entity Mentions"
   drill_fields: [entity_id]
 
@@ -587,26 +587,26 @@ view: kaggle_clinical_notes_nlp_results__entities {
   }
 }
 
-# The name of this view in Looker is "Kaggle Clinical Notes Nlp Results Entity Mentions"
-view: kaggle_clinical_notes_nlp_results__entity_mentions {
+# The name of this view in Looker is "Clinical Notes Nlp Results Entity Mentions"
+view: clinical_notes_nlp_results__entity_mentions {
   label: "NLP Results - Entity Mentions"
 
   dimension: entity_mentions_primary_key {
     primary_key: yes
     hidden: yes
-    sql: ${kaggle_clinical_notes_nlp_results.id} || '-' || ${mention_id}  ;;
+    sql: ${clinical_notes_nlp_results.id} || '-' || ${mention_id}  ;;
   }
 
   measure: term_mention_count {
     type: count
     #sql: ${entity_mentions_primary_key} ;;
     value_format_name: decimal_0
-    drill_fields: [kaggle_clinical_notes_nlp_results.patient_id,
-                   kaggle_clinical_notes_nlp_results.age_tier,
-                   kaggle_clinical_notes_nlp_results.sex,
-                   kaggle_clinical_notes_nlp_results.service,
-                   kaggle_clinical_notes_nlp_results.admission_offset_date,
-                   kaggle_clinical_notes_nlp_results.discharge_offset_date
+    drill_fields: [clinical_notes_nlp_results.patient_id,
+                   clinical_notes_nlp_results.age_tier,
+                   clinical_notes_nlp_results.sex,
+                   clinical_notes_nlp_results.service,
+                   clinical_notes_nlp_results.admission_offset_date,
+                   clinical_notes_nlp_results.discharge_offset_date
                    ]
   }
 
@@ -838,11 +838,11 @@ view: kaggle_clinical_notes_nlp_results__entity_mentions {
     hidden: yes
     type: string
     sql: CASE
-              WHEN (regexp_replace(LOWER(kaggle_clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ')) LIKE '%allergies%'
-              OR (regexp_replace(LOWER(kaggle_clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ')) LIKE '%allergy%'
-              OR (regexp_replace(LOWER(kaggle_clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ')) LIKE '%allergic%'
-              OR (regexp_replace(LOWER(kaggle_clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ')) LIKE '%intolerant%'
-              OR (regexp_replace(LOWER(kaggle_clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ')) LIKE '%hypersensitivity%' THEN 1
+              WHEN (regexp_replace(LOWER(clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ')) LIKE '%allergies%'
+              OR (regexp_replace(LOWER(clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ')) LIKE '%allergy%'
+              OR (regexp_replace(LOWER(clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ')) LIKE '%allergic%'
+              OR (regexp_replace(LOWER(clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ')) LIKE '%intolerant%'
+              OR (regexp_replace(LOWER(clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ')) LIKE '%hypersensitivity%' THEN 1
               ELSE 0 END
     ;;
   }
@@ -917,8 +917,8 @@ view: kaggle_clinical_notes_nlp_results__entity_mentions {
 
 }
 
-# The name of this view in Looker is "Kaggle Clinical Notes Nlp Results Relationships" - HIDDEN
-view: kaggle_clinical_notes_nlp_results__relationships {
+# The name of this view in Looker is "Clinical Notes Nlp Results Relationships" - HIDDEN
+view: clinical_notes_nlp_results__relationships {
 
   dimension: confidence {
     hidden: yes
@@ -939,18 +939,18 @@ view: kaggle_clinical_notes_nlp_results__relationships {
   }
 }
 
-# The name of this view in Looker is "Kaggle Clinical Notes Nlp Results Entities Vocabulary Codes" - HIDDEN
-view: kaggle_clinical_notes_nlp_results__entities__vocabulary_codes {
+# The name of this view in Looker is "Clinical Notes Nlp Results Entities Vocabulary Codes" - HIDDEN
+view: clinical_notes_nlp_results__entities__vocabulary_codes {
 
-  dimension: kaggle_clinical_notes_nlp_results__entities__vocabulary_codes {
+  dimension: clinical_notes_nlp_results__entities__vocabulary_codes {
     hidden: yes
     type: string
-    sql: kaggle_clinical_notes_nlp_results__entities__vocabulary_codes ;;
+    sql: clinical_notes_nlp_results__entities__vocabulary_codes ;;
   }
 }
 
-# The name of this view in Looker is "Kaggle Clinical Notes Nlp Results Entity Mentions Linked Entities" - HIDDEN
-view: kaggle_clinical_notes_nlp_results__entity_mentions__linked_entities {
+# The name of this view in Looker is "Clinical Notes Nlp Results Entity Mentions Linked Entities" - HIDDEN
+view: clinical_notes_nlp_results__entity_mentions__linked_entities {
 
   dimension: entity_id {
     hidden: yes

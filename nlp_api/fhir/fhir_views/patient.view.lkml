@@ -2,7 +2,7 @@
 view: patient {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `looker-private-demo.healthcare_api_sandbox.Patient`
+  sql_table_name: `@{PATIENT_SCOPED_TABLE_PATH}`
     ;;
   drill_fields: [id]
   # This primary key is the unique key for this table in the underlying database.

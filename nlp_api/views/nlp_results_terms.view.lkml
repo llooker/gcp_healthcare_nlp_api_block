@@ -1,27 +1,27 @@
-view: kaggle_nlp_results_terms {
+view: nlp_results_terms {
   label: "*Preferred Term Filter"
   derived_table: {
     persist_for: "24 hours"
     sql: SELECT
-          kaggle_clinical_notes_nlp_results.id  AS observation_id,
-          (DATE_ADD(DATE(kaggle_clinical_notes_nlp_results.dob), INTERVAL -139 YEAR)) || kaggle_clinical_notes_nlp_results.sex  AS patient_id,
-          regexp_replace(LOWER(kaggle_clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ') AS original_term,
-          kaggle_clinical_notes_nlp_results__entity_mentions.text.beginOffset AS text_begin_offset
+          clinical_notes_nlp_results.id  AS observation_id,
+          (DATE_ADD(DATE(clinical_notes_nlp_results.dob), INTERVAL -139 YEAR)) || clinical_notes_nlp_results.sex  AS patient_id,
+          regexp_replace(LOWER(clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ') AS original_term,
+          clinical_notes_nlp_results__entity_mentions.text.beginOffset AS text_begin_offset
 
-      FROM `looker-private-demo.healthcare_api_sandbox.kaggle_clinical_notes_nlp_results`
-           AS kaggle_clinical_notes_nlp_results
+      FROM `@{NLP_RESULTS_SCOPED_TABLE_PATH}`
+           AS clinical_notes_nlp_results
 
-      LEFT JOIN UNNEST(kaggle_clinical_notes_nlp_results.entityMentions) as kaggle_clinical_notes_nlp_results__entity_mentions
+      LEFT JOIN UNNEST(clinical_notes_nlp_results.entityMentions) as clinical_notes_nlp_results__entity_mentions
 
-      WHERE {% condition filter_on_original_term %} regexp_replace(LOWER(kaggle_clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ') {% endcondition %} AND
+      WHERE {% condition filter_on_original_term %} regexp_replace(LOWER(clinical_notes_nlp_results__entity_mentions.text.content),"[^a-zA-Z0-9 -]",' ') {% endcondition %} AND
 
 
-      ((EXTRACT(YEAR FROM kaggle_clinical_notes_nlp_results.dob )) >= 2058
-      AND (EXTRACT(YEAR FROM DATE_ADD(DATE(kaggle_clinical_notes_nlp_results.admission_date), INTERVAL -184 YEAR) )) >= 1996
-      AND (DATE_DIFF(CURRENT_DATE(), DATE (DATE_ADD(DATE(kaggle_clinical_notes_nlp_results.dob), INTERVAL -139 YEAR)), YEAR) + 40) > 0
-      AND (TIMESTAMP_DIFF((DATE_ADD(DATE(kaggle_clinical_notes_nlp_results.discharge_date), INTERVAL -184 YEAR))  ,
-      (DATE_ADD(DATE(kaggle_clinical_notes_nlp_results.admission_date), INTERVAL -184 YEAR)) , DAY)) >= 0
-      AND (EXTRACT(YEAR FROM DATE_ADD(DATE(kaggle_clinical_notes_nlp_results.dob), INTERVAL -139 YEAR) )) < 2022)
+      ((EXTRACT(YEAR FROM clinical_notes_nlp_results.dob )) >= 2058
+      AND (EXTRACT(YEAR FROM DATE_ADD(DATE(clinical_notes_nlp_results.admission_date), INTERVAL -184 YEAR) )) >= 1996
+      AND (DATE_DIFF(CURRENT_DATE(), DATE (DATE_ADD(DATE(clinical_notes_nlp_results.dob), INTERVAL -139 YEAR)), YEAR) + 40) > 0
+      AND (TIMESTAMP_DIFF((DATE_ADD(DATE(clinical_notes_nlp_results.discharge_date), INTERVAL -184 YEAR))  ,
+      (DATE_ADD(DATE(clinical_notes_nlp_results.admission_date), INTERVAL -184 YEAR)) , DAY)) >= 0
+      AND (EXTRACT(YEAR FROM DATE_ADD(DATE(clinical_notes_nlp_results.dob), INTERVAL -139 YEAR) )) < 2022)
       GROUP BY
           1, 2, 3, 4
       ORDER BY
@@ -112,12 +112,12 @@ view: kaggle_nlp_results_terms {
 
   set: detail {
     fields:
-    [kaggle_clinical_notes_nlp_results.patient_id,
-      kaggle_clinical_notes_nlp_results.age_tier,
-      kaggle_clinical_notes_nlp_results.sex,
-      kaggle_clinical_notes_nlp_results.service,
-      kaggle_clinical_notes_nlp_results.admission_offset_date,
-      kaggle_clinical_notes_nlp_results.discharge_offset_date
+    [clinical_notes_nlp_results.patient_id,
+      clinical_notes_nlp_results.age_tier,
+      clinical_notes_nlp_results.sex,
+      clinical_notes_nlp_results.service,
+      clinical_notes_nlp_results.admission_offset_date,
+      clinical_notes_nlp_results.discharge_offset_date
     ]
   }
 }
