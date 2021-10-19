@@ -4,21 +4,21 @@ project_name: "gcp_healthcare_nlp_api_block"
 # # on this instance with include: statements
 #
 constant: CONNECTION_NAME {
-  value: "looker-private-demo"
+  value: ""
   export: override_optional
 }
 
 constant: NLP_RESULTS_SCOPED_TABLE_PATH {
-  value: "looker-private-demo.healthcare_api_sandbox.kaggle_clinical_notes_nlp_results"
+  value: ""
   export: override_optional
 }
 
 constant: ENCOUNTER_SCOPED_TABLE_PATH {
-  value: "looker-private-demo.healthcare_api_sandbox.Encounter"
+  value: ""
   export: override_optional
 }
 
 constant: PATIENT_SCOPED_TABLE_PATH {
-  value: "looker-private-demo.healthcare_api_sandbox.Patient"
+  value: ""
   export: override_optional
 }
