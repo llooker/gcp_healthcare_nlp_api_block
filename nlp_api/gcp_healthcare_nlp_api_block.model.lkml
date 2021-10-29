@@ -10,20 +10,21 @@ label: "GCP Healthcare NLP API"
 explore: clinical_notes_nlp_results {
   extends: [nlp_results_join_logic]
   label: "NLP Results - Patient Review"
-  #This ensures that no patient in the dataset is over 102 years old.
-  #sql_always_where: ${dob_year} >= 2058 AND ${admission_offset_year} >= 1996 AND ${age} > 0 AND ${days_los} >= 0 AND ${dob_offset_year} < 2022;;
 
-  # Additiona Luka
-  # Joins in Encounter base view and patient base view from the fhir folder
-  # full unnested joins defined in fhir -> fhir_unnested_explores
+  # JOINS in Encounter base view and Patient base view from the FHIR folder.
+  # Full unnested joins defined in fhir -> fhir_unnested_explores, for reference.
+  # Thie will extend the Explore to contain both unstructured & structured data.
+
   # join: encounter {
+  #   view_label: Encounters
   #   type: left_outer
-  #   sql_on: ${kaggle_clinical_notes_nlp_results.id} = ${encounter.part_of__encounter_id} ;;
+  #   sql_on: ${nlp_results.id} = ${encounter.part_of__encounter_id} ;;
   #   relationship: many_to_one
   # }
   # join: patient {
+  #   view_label: Patients
   #   type: left_outer
-  #   sql_on: ${kaggle_clinical_notes_nlp_results.id} = ${patient.id} ;;
+  #   sql_on: ${nlp_results.id} = ${patient.id} ;;
   #   relationship: many_to_one
   # }
 }
