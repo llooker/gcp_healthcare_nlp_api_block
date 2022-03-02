@@ -45,6 +45,10 @@ There is not a standard BQ connector for the GCP Healthcare NLP API but it has b
 ```
 [
     {
+       "name": "rawText",
+       "type": "STRING"
+    },
+    {
        "fields": [
          {
            "name": "preferredTerm",
