@@ -20,11 +20,11 @@
       \ \n\ttext-align:center; \n\tmargin-right: 12px; \n\tfloat: left;\">\n<img width=\"\
       30px\" src=\"https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png\"\
       />\n</span>\n\n<span style=\"\n\tpadding: 4px; \n\tfloat:left;\">\n\t<h1 style=\"\
-      margin-top:0;\n\t\tcolor: #6E6E6E; \n\tline-height: 1.2rem;\">\n\t\tBaptist\
-      \ Health South Florida NLP PoC\n\t</h1>\n</span>\n<span style=\"padding: 4px;\
-      \ float:right;\">\n\t<a style=\"background-color: #fff; color: #5f6368; padding:\
-      \ 5px 10px;\" href=\"/boards/82\">Home</a>\n\t<a style=\"background-color: #fff;\
-      \ color: #5f6368; padding: 5px 10px;\" href=\"https://cloudcenorthamhcls.cloud.looker.com/explore/healthcare_nlp/entitymentions\"\
+      margin-top:0;\n\t\tcolor: #6E6E6E; \n\tline-height: 1.2rem;\">\n\t\tNLP Terms\
+      \ with Patient Summary\n\t</h1>\n</span>\n<span style=\"padding: 4px; float:right;\"\
+      >\n\t<a style=\"background-color: #fff; color: #5f6368; padding: 5px 10px;\"\
+      \ href=\"/boards/82\">Home</a>\n\t<a style=\"background-color: #fff; color:\
+      \ #5f6368; padding: 5px 10px;\" href=\"https://cloudcenorthamhcls.cloud.looker.com/explore/healthcare_nlp/entitymentions\"\
       >Explore the Data</a>\n\t<a style=\"background-color: #fff; color: #5f6368;\
       \ padding: 5px 10px;\" href=\"https://googledemo.looker.com/dashboards/1001?Patient+ID=2002-08-05M\"\
       >Go to Patient View</a>\n</span>\n\n<div>"
