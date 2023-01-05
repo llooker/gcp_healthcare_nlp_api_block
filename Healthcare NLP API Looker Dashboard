@@ -1,0 +1,905 @@
+#LookML Dashboards showing results from API output for NLP terms
+
+- dashboard: nlp_terms
+  title: NLP Terms
+  layout: newspaper
+  preferred_viewer: dashboards-next
+  description: ''
+  preferred_slug: iQcFjrCS3FRoSEmFDsVhhO
+  elements:
+  - name: ''
+    type: text
+    title_text: ''
+    subtitle_text: ''
+    body_text: "<div style=\"\n\theight: 54px; \n\tbackground-color: #fff; \n\tcolor:\
+      \ #5f6368; \n\tborder-radius: 54px; \n\tborder: solid 1px #5f6368; \n\tfont-family:\
+      \ Google Sans,Noto Sans,Noto Sans JP,Noto Sans KR,Noto Naskh Arabic,Noto Sans\
+      \ Thai,Noto Sans Hebrew,Noto Sans Bengali,sans-serif; \n\tpadding: 12px;\">\n\
+      <span style=\"\n\twidth: 38px;\n\theight: 38px; \n\tborder-radius: 60px; \n\t\
+      background-color: white; \n\tdisplay:table-cell; \n\tvertical-align:middle;\
+      \ \n\ttext-align:center; \n\tmargin-right: 12px; \n\tfloat: left;\">\n<img width=\"\
+      30px\" src=\"https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png\"\
+      />\n</span>\n\n<span style=\"\n\tpadding: 4px; \n\tfloat:left;\">\n\t<h1 style=\"\
+      margin-top:0;\n\t\tcolor: #6E6E6E; \n\tline-height: 1.2rem;\">\n\t\tBaptist\
+      \ Health South Florida NLP PoC\n\t</h1>\n</span>\n<span style=\"padding: 4px;\
+      \ float:right;\">\n\t<a style=\"background-color: #fff; color: #5f6368; padding:\
+      \ 5px 10px;\" href=\"/boards/82\">Home</a>\n\t<a style=\"background-color: #fff;\
+      \ color: #5f6368; padding: 5px 10px;\" href=\"https://cloudcenorthamhcls.cloud.looker.com/explore/healthcare_nlp/entitymentions\"\
+      >Explore the Data</a>\n\t<a style=\"background-color: #fff; color: #5f6368;\
+      \ padding: 5px 10px;\" href=\"https://googledemo.looker.com/dashboards/1001?Patient+ID=2002-08-05M\"\
+      >Go to Patient View</a>\n</span>\n\n<div>"
+    row: 0
+    col: 0
+    width: 20
+    height: 2
+  - name: " (2)"
+    type: text
+    title_text: ''
+    subtitle_text: ''
+    body_text: |2
+
+      <h1 style="margin-top:20px; padding: 5px; border-bottom: solid 1px black; height: 60px; color: black; text-align: center;">Patient Demographic Summary</h1>
+    row: 2
+    col: 0
+    width: 20
+    height: 3
+  - title: Filtered Text List
+    name: Filtered Text List
+    model: healthcare_nlp
+    explore: entitymentions
+    type: looker_grid
+    fields: [nlpinput.text_list]
+    limit: 500
+    column_limit: 50
+    show_view_names: false
+    show_row_numbers: false
+    transpose: false
+    truncate_text: false
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: center
+    header_font_size: '12'
+    rows_font_size: '16'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    color_application:
+      collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+      palette_id: 55dee055-18cf-4472-9669-469322a6f264
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    series_cell_visualizations: {}
+    series_text_format:
+      nlpinput.text_list:
+        fg_color: "#462C9D"
+        bold: true
+        align: left
+    header_font_color: "#462C9D"
+    header_background_color: "#eeeee4"
+    hidden_pivots: {}
+    defaults_version: 1
+    title_hidden: true
+    listen:
+      Certainty Assessment Value: entitymentions.certainty_assessment__value
+      Temporal Assessment Value: entitymentions.temporal_assessment__value
+      Record ID: entitymentions.id
+    row: 15
+    col: 0
+    width: 10
+    height: 6
+  - title: Vocabulary Source
+    name: Vocabulary Source
+    model: healthcare_nlp
+    explore: entitymentions
+    type: looker_grid
+    fields: [entitymentions.type, entity.preferred_term, entity__vocabulary_codes.vocab_codes_linked,
+      entitymentions__linked_entities.entity_id_agg]
+    sorts: [entitymentions__linked_entities.entity_id_agg desc 0]
+    limit: 500
+    column_limit: 50
+    show_view_names: false
+    show_row_numbers: false
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    color_application:
+      collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+      palette_id: 55dee055-18cf-4472-9669-469322a6f264
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    series_cell_visualizations:
+      entitymentions.confidence_mean:
+        is_active: true
+        palette:
+          palette_id: 12809dc5-ac61-4801-8878-10c61fb43c60
+          collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+    series_text_format:
+      entitymentions__linked_entities.entity_id_agg:
+        align: left
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    hidden_pivots: {}
+    defaults_version: 1
+    series_types: {}
+    listen:
+      Certainty Assessment Value: entitymentions.certainty_assessment__value
+      Temporal Assessment Value: entitymentions.temporal_assessment__value
+      Record ID: entitymentions.id
+    row: 15
+    col: 10
+    width: 10
+    height: 6
+  - title: Substance Abuse Status
+    name: Substance Abuse Status
+    model: healthcare_nlp
+    explore: entitymentions
+    type: looker_grid
+    fields: [entitymentions.text__content, entitymentions__linked_entities.entity_id_agg]
+    filters:
+      entitymentions.type: SUBSTANCE ABUSE
+    sorts: [entitymentions.text__content]
+    limit: 20
+    column_limit: 50
+    show_view_names: false
+    show_row_numbers: false
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: false
+    table_theme: gray
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: ''
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    color_application:
+      collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+      palette_id: 55dee055-18cf-4472-9669-469322a6f264
+      options:
+        steps: 5
+    show_sql_query_menu_options: false
+    pinned_columns:
+      entitymentions.text__content: left
+    column_order: [entitymentions.text__content, entity.entity_id, entitymentions.count]
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    series_column_widths: {}
+    series_cell_visualizations:
+      entitymentions.count:
+        is_active: true
+        palette:
+          palette_id: 12809dc5-ac61-4801-8878-10c61fb43c60
+          collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+    series_text_format:
+      entitymentions.text__content: {}
+      entitymentions__linked_entities.entity_id_agg:
+        align: left
+    header_font_color: "#fff"
+    header_background_color: "#462C9D"
+    conditional_formatting: [{type: equal to, value: !!null '', background_color: !!null '',
+        font_color: !!null '', color_application: {collection_id: 5b121cce-cf79-457c-a52a-9162dc174766,
+          palette_id: 33649276-c3c6-4405-bf32-14f5c8c1388e}, bold: false, italic: false,
+        strikethrough: false, fields: !!null ''}]
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    x_axis_zoom: true
+    y_axis_zoom: true
+    series_types: {}
+    series_colors: {}
+    defaults_version: 1
+    hidden_fields: []
+    hidden_pivots: {}
+    listen:
+      Certainty Assessment Value: entitymentions.certainty_assessment__value
+      Temporal Assessment Value: entitymentions.temporal_assessment__value
+      Record ID: entitymentions.id
+    row: 11
+    col: 5
+    width: 5
+    height: 4
+  - title: Current Medications
+    name: Current Medications
+    model: healthcare_nlp
+    explore: entitymentions
+    type: looker_grid
+    fields: [entitymentions.text__content, entitymentions__linked_entities.entity_id_agg]
+    filters:
+      entitymentions.type: MEDICINE
+    sorts: [entitymentions.text__content]
+    limit: 20
+    column_limit: 50
+    show_view_names: false
+    show_row_numbers: false
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: false
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    color_application:
+      collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+      palette_id: 55dee055-18cf-4472-9669-469322a6f264
+      options:
+        steps: 5
+    show_sql_query_menu_options: false
+    pinned_columns:
+      entitymentions.text__content: left
+    column_order: [entitymentions.text__content, entity.entity_id, entitymentions.count]
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    series_column_widths: {}
+    series_cell_visualizations:
+      entitymentions.count:
+        is_active: true
+        palette:
+          palette_id: 12809dc5-ac61-4801-8878-10c61fb43c60
+          collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+    series_text_format:
+      entitymentions__linked_entities.entity_id_agg:
+        align: left
+    header_font_color: "#fff"
+    header_background_color: "#462C9D"
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    x_axis_zoom: true
+    y_axis_zoom: true
+    series_types: {}
+    series_colors: {}
+    defaults_version: 1
+    hidden_fields: []
+    hidden_pivots: {}
+    listen:
+      Certainty Assessment Value: entitymentions.certainty_assessment__value
+      Temporal Assessment Value: entitymentions.temporal_assessment__value
+      Record ID: entitymentions.id
+    row: 11
+    col: 10
+    width: 5
+    height: 4
+  - title: Current Medical Devices
+    name: Current Medical Devices
+    model: healthcare_nlp
+    explore: entitymentions
+    type: looker_grid
+    fields: [entitymentions.text__content, entitymentions__linked_entities.entity_id_agg]
+    filters:
+      entitymentions.type: MEDICAL DEVICE
+    sorts: [entitymentions.text__content]
+    limit: 20
+    column_limit: 50
+    show_view_names: false
+    show_row_numbers: false
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: false
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    color_application:
+      collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+      palette_id: 55dee055-18cf-4472-9669-469322a6f264
+      options:
+        steps: 5
+    show_sql_query_menu_options: false
+    pinned_columns:
+      entitymentions.text__content: left
+    column_order: [entitymentions.text__content, entity.entity_id, entitymentions.count]
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    series_column_widths: {}
+    series_cell_visualizations:
+      entitymentions.count:
+        is_active: true
+        palette:
+          palette_id: 12809dc5-ac61-4801-8878-10c61fb43c60
+          collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+    series_text_format:
+      entitymentions__linked_entities.entity_id_agg:
+        align: left
+    header_font_color: "#fff"
+    header_background_color: "#462C9D"
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    x_axis_zoom: true
+    y_axis_zoom: true
+    series_types: {}
+    series_colors: {}
+    defaults_version: 1
+    hidden_fields: []
+    hidden_pivots: {}
+    listen:
+      Certainty Assessment Value: entitymentions.certainty_assessment__value
+      Temporal Assessment Value: entitymentions.temporal_assessment__value
+      Record ID: entitymentions.id
+    row: 11
+    col: 15
+    width: 5
+    height: 4
+  - title: Existing Conditions
+    name: Existing Conditions
+    model: healthcare_nlp
+    explore: entitymentions
+    type: looker_grid
+    fields: [entitymentions.text__content, entitymentions__linked_entities.entity_id_agg]
+    filters:
+      entitymentions.type: PROBLEM
+    sorts: [entitymentions.text__content]
+    limit: 20
+    column_limit: 50
+    show_view_names: false
+    show_row_numbers: false
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: false
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: ''
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    color_application:
+      collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+      palette_id: 55dee055-18cf-4472-9669-469322a6f264
+      options:
+        steps: 5
+    show_sql_query_menu_options: false
+    pinned_columns:
+      entitymentions.text__content: left
+    column_order: [entitymentions.text__content, entity.entity_id, entitymentions.count]
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    series_column_widths: {}
+    series_cell_visualizations:
+      entitymentions.count:
+        is_active: true
+        palette:
+          palette_id: 12809dc5-ac61-4801-8878-10c61fb43c60
+          collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+    series_text_format:
+      entitymentions__linked_entities.entity_id_agg:
+        align: left
+    header_font_color: "#fff"
+    header_background_color: "#462C9D"
+    conditional_formatting: [{type: not equal to, value: 0, background_color: "#462C9D",
+        font_color: !!null '', color_application: {collection_id: 5b121cce-cf79-457c-a52a-9162dc174766,
+          palette_id: 33649276-c3c6-4405-bf32-14f5c8c1388e}, bold: false, italic: false,
+        strikethrough: false, fields: !!null ''}]
+    truncate_column_names: false
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    x_axis_zoom: true
+    y_axis_zoom: true
+    series_types: {}
+    series_colors: {}
+    defaults_version: 1
+    hidden_fields: []
+    hidden_pivots: {}
+    show_null_points: true
+    interpolation: linear
+    value_labels: legend
+    label_type: labPer
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    map_plot_mode: points
+    heatmap_gridlines: false
+    heatmap_gridlines_empty: false
+    heatmap_opacity: 0.5
+    show_region_field: true
+    draw_map_labels_above_data: true
+    map_tile_provider: light
+    map_position: fit_data
+    map_scale_indicator: 'off'
+    map_pannable: true
+    map_zoomable: true
+    map_marker_type: circle
+    map_marker_icon_name: default
+    map_marker_radius_mode: proportional_value
+    map_marker_units: meters
+    map_marker_proportional_scale_type: linear
+    map_marker_color_mode: fixed
+    show_legend: true
+    quantize_map_value_colors: false
+    reverse_map_value_colors: false
+    listen:
+      Certainty Assessment Value: entitymentions.certainty_assessment__value
+      Temporal Assessment Value: entitymentions.temporal_assessment__value
+      Record ID: entitymentions.id
+    row: 11
+    col: 0
+    width: 5
+    height: 4
+  - name: '<h1 style="margin-top:20px; padding: 5px; border-bottom: solid 1px black;
+      height: 60px; color: black; text-align: center;">Individual Patient Overview</h1>'
+    type: text
+    title_text: '<h1 style="margin-top:20px; padding: 5px; border-bottom: solid 1px
+      black; height: 60px; color: black; text-align: center;">Individual Patient Overview</h1>'
+    subtitle_text: ''
+    body_text: |2-
+
+
+      <center>Select a Record ID in the filter above to view patient specific information</center>
+    row: 8
+    col: 5
+    width: 15
+    height: 3
+  - title: Fatigue Mentions
+    name: Fatigue Mentions
+    model: healthcare_nlp
+    explore: entitymentions
+    type: single_value
+    fields: [entitymentions.count_of_mentions_with_fatigue]
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: true
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    color_application:
+      collection_id: new-custom-collection
+      palette_id: new-custom-collection-categorical-0
+    custom_color: "#fff"
+    single_value_title: ''
+    conditional_formatting: [{type: not equal to, value: 0, background_color: "#873e23",
+        font_color: "#fff", color_application: {collection_id: new-custom-collection,
+          palette_id: new-custom-collection-sequential-0}, bold: false, italic: false,
+        strikethrough: false, fields: !!null ''}]
+    show_view_names: false
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: editable
+    limit_displayed_rows: false
+    defaults_version: 1
+    series_types: {}
+    listen: {}
+    row: 5
+    col: 16
+    width: 4
+    height: 3
+  - title: Snoring Mentions
+    name: Snoring Mentions
+    model: healthcare_nlp
+    explore: entitymentions
+    type: single_value
+    fields: [entitymentions.count_of_mentions_with_snoring]
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: true
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    color_application:
+      collection_id: new-custom-collection
+      palette_id: new-custom-collection-categorical-0
+    single_value_title: ''
+    conditional_formatting: [{type: not equal to, value: 0, background_color: "#063970",
+        font_color: "#fff", color_application: {collection_id: new-custom-collection,
+          palette_id: new-custom-collection-sequential-0}, bold: false, italic: false,
+        strikethrough: false, fields: !!null ''}]
+    show_view_names: false
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: editable
+    limit_displayed_rows: false
+    defaults_version: 1
+    series_types: {}
+    transpose: false
+    truncate_text: true
+    size_to_fit: true
+    header_text_alignment: left
+    header_font_size: 12
+    rows_font_size: 12
+    listen: {}
+    row: 5
+    col: 4
+    width: 4
+    height: 3
+  - title: Breathing Issues Mentions
+    name: Breathing Issues Mentions
+    model: healthcare_nlp
+    explore: entitymentions
+    type: single_value
+    fields: [entitymentions.count_of_mentions_with_breathing_issues]
+    limit: 500
+    column_limit: 50
+    dynamic_fields: [{measure: count_of_id, based_on: entitymentions.id, expression: '',
+        label: Count of ID, type: count_distinct, _kind_hint: measure, _type_hint: number}]
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: true
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    conditional_formatting: [{type: not equal to, value: 0, background_color: "#1e81b0",
+        font_color: "#fff", color_application: {collection_id: new-custom-collection,
+          palette_id: new-custom-collection-sequential-0}, bold: false, italic: false,
+        strikethrough: false, fields: !!null ''}]
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    hidden_pivots: {}
+    defaults_version: 1
+    series_types: {}
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    header_text_alignment: left
+    header_font_size: 12
+    rows_font_size: 12
+    listen: {}
+    row: 5
+    col: 12
+    width: 4
+    height: 3
+  - title: Hypertensive State Mentions
+    name: Hypertensive State Mentions
+    model: healthcare_nlp
+    explore: entitymentions
+    type: single_value
+    fields: [entitymentions.count_of_mentions_with_hypertensive_state]
+    limit: 500
+    column_limit: 50
+    dynamic_fields: [{measure: count_of_id, based_on: entitymentions.id, expression: '',
+        label: Count of ID, type: count_distinct, _kind_hint: measure, _type_hint: number}]
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: true
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    color_application:
+      collection_id: new-custom-collection
+      palette_id: new-custom-collection-categorical-0
+    single_value_title: ''
+    conditional_formatting: [{type: not equal to, value: 0, background_color: "#76b5c5",
+        font_color: "#fff", color_application: {collection_id: new-custom-collection,
+          palette_id: new-custom-collection-sequential-0}, bold: false, italic: false,
+        strikethrough: false, fields: !!null ''}]
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    hidden_pivots: {}
+    defaults_version: 1
+    series_types: {}
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    header_text_alignment: left
+    header_font_size: 12
+    rows_font_size: 12
+    listen: {}
+    row: 5
+    col: 8
+    width: 4
+    height: 3
+  - title: Total Patient Records
+    name: Total Patient Records
+    model: healthcare_nlp
+    explore: entitymentions
+    type: single_value
+    fields: [count_of_patient_id]
+    limit: 500
+    dynamic_fields: [{measure: count_of_patient_id, based_on: entitymentions.id, expression: '',
+        label: Count of Patient ID, type: count_distinct, _kind_hint: measure, _type_hint: number}]
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: true
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    conditional_formatting: [{type: not equal to, value: 0, background_color: "#FFE663",
+        font_color: !!null '', color_application: {collection_id: 5b121cce-cf79-457c-a52a-9162dc174766,
+          palette_id: 33649276-c3c6-4405-bf32-14f5c8c1388e}, bold: false, italic: false,
+        strikethrough: false, fields: !!null ''}]
+    defaults_version: 1
+    listen: {}
+    row: 5
+    col: 0
+    width: 4
+    height: 3
+  - title: Record ID
+    name: Record ID
+    model: healthcare_nlp
+    explore: entitymentions
+    type: single_value
+    fields: [entitymentions.id]
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: true
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+    conditional_formatting: [{type: not null, value: 0, background_color: "#1A73E8",
+        font_color: !!null '', color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2,
+          palette_id: 56d0c358-10a0-4fd6-aa0b-b117bef527ab}, bold: false, italic: false,
+        strikethrough: false, fields: !!null ''}]
+    series_types: {}
+    defaults_version: 1
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    header_text_alignment: left
+    header_font_size: 12
+    rows_font_size: 12
+    listen:
+      Certainty Assessment Value: entitymentions.certainty_assessment__value
+      Temporal Assessment Value: entitymentions.temporal_assessment__value
+      Record ID: entitymentions.id
+    row: 8
+    col: 0
+    width: 5
+    height: 3
+  filters:
+  - name: Record ID
+    title: Record ID
+    type: field_filter
+    default_value: 9472382415.txt
+    allow_multiple_values: false
+    required: false
+    ui_config:
+      type: advanced
+      display: popover
+    model: healthcare_nlp
+    explore: entitymentions
+    listens_to_filters: [Temporal Assessment Value, Certainty Assessment Value]
+    field: entitymentions.id
+  - name: Certainty Assessment Value
+    title: Certainty Assessment Value
+    type: field_filter
+    default_value: LIKELY
+    allow_multiple_values: false
+    required: false
+    ui_config:
+      type: advanced
+      display: popover
+    model: healthcare_nlp
+    explore: entitymentions
+    listens_to_filters: [Temporal Assessment Value, Record ID]
+    field: entitymentions.certainty_assessment__value
+  - name: Temporal Assessment Value
+    title: Temporal Assessment Value
+    type: field_filter
+    default_value: CURRENT
+    allow_multiple_values: false
+    required: false
+    ui_config:
+      type: advanced
+      display: popover
+    model: healthcare_nlp
+    explore: entitymentions
+    listens_to_filters: [Record ID, Certainty Assessment Value]
+    field: entitymentions.temporal_assessment__value
